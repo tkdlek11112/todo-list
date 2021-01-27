@@ -1,10 +1,11 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {createGlobalStyle} from 'styled-components';
 import TodoTemplate from "./components/TodoTemplate";
-import TodoHead from "./components/TodoHead";
-import TodoList from "./components/TodoList";
-import TodoItem from "./components/TodoItem";
-import TodoCreate from "./components/TodoCreate";
+import TodoListEx1 from "./components/example/TodoListEx1";
+import DevMenu from "./components/DevMenu";
+import ScreenSelector from "./components/ScreenSelector";
+import LoginProvider from "./LoginContext";
+import Login from "./components/Login";
 
 const GlobalStyle = createGlobalStyle`
     body {
@@ -14,18 +15,22 @@ const GlobalStyle = createGlobalStyle`
 
 
 function App(){
-    return(
-        <>
-            <GlobalStyle/>
-            <div>안녕하세요.</div>
-            <TodoTemplate>
-                <TodoHead></TodoHead>
-                <TodoList></TodoList>
-                <TodoCreate/>
-            </TodoTemplate>
+    const [screen, setScreen] = useState(0)
 
-        </>
+    return(
+        <LoginProvider>
+            <DevMenu setScreen={setScreen}/>
+            <GlobalStyle/>
+            <Login></Login>
+
+            <TodoTemplate>
+
+                {/*<TodoHead></TodoHead>*/}
+                <ScreenSelector screen={screen} />
+                {/*<TodoCreate/>*/}
+            </TodoTemplate>
+        </LoginProvider>
     );
 }
 
-export default App
+export default App;
