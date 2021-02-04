@@ -1,6 +1,9 @@
-import React from 'react';
+import React,{useContext, useState, useMemo, useEffect} from 'react';
 import styled, {css} from 'styled-components';
 import Button, {NormalButton} from "./Button";
+import {useLoginProvider, usePasswordContext, useSetPasswordContext, useSetUserIdContext} from "../LoginContext";
+import {useAsync} from "react-async";
+import {PostJoin, PostLogin} from "../api";
 
 const LoginTemplateBlock = styled.div`
     width: 512px;
@@ -45,26 +48,112 @@ const ExplainText = styled.p`
     display: inline-block;
 `;
 
-function Login() {
-    return (
-        <>
-            <LoginTemplateBlock>
-                <div>
-                    <ExplainText>아이디</ExplainText>
-                    <IdInput/>
-                    <ExplainText>비밀번호</ExplainText>
+const LoginFormDiv = styled.div`
+    text-align: center;
+`;
 
-                    <PasswordInput/>
-                </div>
-                <div>
-                    <NormalButton outline={true} > 로그인   </NormalButton>
-                    <NormalButton outline={true} > 회원가입 </NormalButton>
-                    <NormalButton outline={true} > 로그아웃 </NormalButton>
-                </div>
-            </LoginTemplateBlock>
+const TextMessage = styled.p`
+    font-size: 20px;
+`;
 
-        </>
-    );
+const ResponseMsgDiv = styled.div`
+    text-align: center;
+    margin: 8px;
+`;
+
+function setGlobalUserId(user_id, setUserId){
+    setUserId(user_id);
 }
 
-export default Login;
+
+function Login() {
+    const userId = useLoginProvider(); // 이건 전체 id로 사용하자
+    const setUserId = useSetUserIdContext();
+    const password = usePasswordContext();
+    const setPassword = useSetPasswordContext();
+    const [show, setShow] = useState(true);
+    const [msg, setMsg] = useState('');
+    const [inputUserId, setInputUserId] = useState(''); // 이게 로그인 텍스트 창에 입력한 id
+    const [inputPassword, setInputPassword] = useState(''); // 이게 로그인 텍스트 창에 입력한 id
+
+
+    const {data: response, error, isLoading, run} = useAsync({
+        deferFn: PostLogin,
+        inputUserId,
+        inputPassword,
+        initialValue:{
+            msg:'아이디와 비밀번호를 입력해주세요.'
+        }
+    });
+
+    const Join = () =>{
+        const ret = PostJoin({inputUserId, inputPassword});
+        console.log(ret);
+        ret.then((data)=>{
+            setMsg(data.msg);
+            response.msg=data.msg;
+        });
+    }
+
+    const LogOut = () =>{
+        setMsg('아이디와 비밀번호를 입력해주세요.');
+        response.msg='아이디와 비밀번호를 입력해주세요.';
+        response.user_id = null;
+        setGlobalUserId(response.user_id,setUserId)
+        setShow(true);
+        setInputUserId( '');
+        setInputPassword('');
+    }
+
+    console.log(response);
+    useEffect(() =>{
+        if (response.user_id){
+            setGlobalUserId(response.user_id, setUserId);
+            setShow(false);
+        }
+    });
+
+    useEffect(()=>{
+        setMsg(response.msg)
+    },[response.msg]);
+
+    if(show)
+        return (
+            <>
+                <LoginTemplateBlock>
+                    <LoginFormDiv>
+                        <ExplainText>아이디</ExplainText>
+                        <IdInput value={inputUserId} onChange={(e)=>setInputUserId(e.target.value)} />
+                        <ExplainText>비밀번호</ExplainText>
+                        <PasswordInput value={inputPassword} onChange={(e)=> setInputPassword(e.target.value)}/>
+                    </LoginFormDiv>
+                    <LoginFormDiv>
+                        <NormalButton outline={true} onClick={run} > 로그인   </NormalButton>
+                        <NormalButton outline={true} color={'deeppink'} onClick={Join}  > 회원가입 </NormalButton>
+                    </LoginFormDiv>
+                    <ResponseMsgDiv>
+                        {msg}
+                    </ResponseMsgDiv>
+                </LoginTemplateBlock>
+            </>
+        );
+    else
+        return (
+            <>
+                <LoginTemplateBlock>
+                    <LoginFormDiv>
+                        <TextMessage>
+                            안녕하세요. <b>{inputUserId}</b> 님
+                        </TextMessage>
+                    </LoginFormDiv>
+                    <LoginFormDiv>
+
+                        <NormalButton outline={true} onClick={LogOut}> 로그아웃 </NormalButton>
+
+                    </LoginFormDiv>
+                </LoginTemplateBlock>
+            </>
+        );
+}
+
+export default React.memo(Login);

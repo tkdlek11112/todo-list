@@ -1,16 +1,23 @@
 import React, {useState} from 'react'
-import {createGlobalStyle} from 'styled-components';
+import styled, {createGlobalStyle} from 'styled-components';
 import TodoTemplate from "./components/TodoTemplate";
 import TodoListEx1 from "./components/example/TodoListEx1";
 import DevMenu from "./components/DevMenu";
 import ScreenSelector from "./components/ScreenSelector";
 import LoginProvider from "./LoginContext";
 import Login from "./components/Login";
+import Footer from "./components/Footer";
+
 
 const GlobalStyle = createGlobalStyle`
-    body {
+    body{
         background: gray;
     }
+`;
+
+const PlayGround = styled.div`
+    background: gray;
+
 `;
 
 
@@ -18,18 +25,24 @@ function App(){
     const [screen, setScreen] = useState(0)
 
     return(
-        <LoginProvider>
+        <>
             <DevMenu setScreen={setScreen}/>
             <GlobalStyle/>
-            <Login></Login>
+            <LoginProvider>
+                <PlayGround>
+                    <Login></Login>
 
-            <TodoTemplate>
+                    {/*<TodoTemplate>*/}
 
-                {/*<TodoHead></TodoHead>*/}
-                <ScreenSelector screen={screen} />
-                {/*<TodoCreate/>*/}
-            </TodoTemplate>
-        </LoginProvider>
+                    {/*    /!*<TodoHead></TodoHead>*!/*/}
+                    {/*    <ScreenSelector screen={screen} />*/}
+                    {/*    /!*<TodoCreate/>*!/*/}
+                    {/*</TodoTemplate>*/}
+                </PlayGround>
+                <Footer></Footer>
+
+            </LoginProvider>
+        </>
     );
 }
 

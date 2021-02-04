@@ -1,7 +1,9 @@
 $blue: #228be6;
 $purple: #928bef;
+$lightpurple: #727bdf;
 $gray: #495057;
 $pink: #f06595;
+$deeppink: #ff1493;
 
 @mixin button-color($color) {
     background: $color;
@@ -30,6 +32,11 @@ $pink: #f06595;
     border-radius: 4px;
     border: none;
     cursor: pointer;
+    margin-left: 1rem;
+
+    &.shadow{
+        box-shadow: 4px 4px black;
+    }
 
     // 사이즈 관리
     &.large {
@@ -70,8 +77,14 @@ $pink: #f06595;
         @include button-color($purple);
     }
 
-    & + & {
-        margin-left: 1rem;
+    &.deeppink {
+        @include button-color($deeppink);
     }
+
+    &.lightpurple{
+        @include button-color($lightpurple);
+    }
+
+
 }
 

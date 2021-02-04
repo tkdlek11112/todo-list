@@ -2,15 +2,15 @@ import React from 'react';
 import classNames from 'classnames';
 import './Button.scss'
 
-function Button({children, size, color, outline, setScreen, screenId}){
+function Button({children, size, color, outline, shadow, setScreen, screenId}){
     return (
-        <button className={classNames('Button', size, color, {outline})} onClick={() => setScreen(screenId)} >{children}</button>
+        <button className={classNames('Button', size, color, {outline}, {shadow})} onClick={() => setScreen(screenId)} >{children}</button>
     );
 }
 
-export function NormalButton({children, size, color, outline, onClick}){
+export function NormalButton({children, size, color, outline, shadow, onClick}){
     return (
-        <button className={classNames('Button', size, color, {outline})} onClick={onClick} >{children}</button>
+        <button className={classNames('Button', size, color, {outline}, {shadow})} onClick={onClick} >{children}</button>
     );
 }
 
