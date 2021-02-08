@@ -1,9 +1,9 @@
 import React,{useContext, useState, useMemo, useEffect} from 'react';
 import styled, {css} from 'styled-components';
-import Button, {NormalButton} from "./Button";
-import {useLoginProvider, usePasswordContext, useSetPasswordContext, useSetUserIdContext} from "../LoginContext";
+import Button, {NormalButton} from "../Button";
+import {useLoginProvider, usePasswordContext, useSetPasswordContext, useSetUserIdContext} from "../../LoginContext";
 import {useAsync} from "react-async";
-import {PostJoin, PostLogin} from "../api";
+import {PostJoin, PostLogin} from "../../api";
 
 const LoginTemplateBlock = styled.div`
     width: 512px;
@@ -66,7 +66,7 @@ function setGlobalUserId(user_id, setUserId){
 }
 
 
-function Login() {
+function LoginEx() {
     const userId = useLoginProvider(); // 이건 전체 id로 사용하자
     const setUserId = useSetUserIdContext();
     const password = usePasswordContext();
@@ -156,4 +156,4 @@ function Login() {
         );
 }
 
-export default React.memo(Login);
+export default React.memo(LoginEx);

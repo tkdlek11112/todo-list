@@ -1,7 +1,8 @@
 import React from 'react';
 import styled, {css} from 'styled-components';
 import {MdDone, MdDelete} from 'react-icons/md';
-import {useTodoDispatch} from "../TodoContext";
+import {PostDelete, PostToggle} from "../../api";
+import {useTodoDispatchEx} from "./TodoContextEx";
 
 const Remove = styled.div`
   display: flex;
@@ -58,10 +59,20 @@ const Text = styled.div`
     `}
 `;
 
-function TodoItem({id, done, name}){
-    const dispatch = useTodoDispatch();
-    const onToggle = () => dispatch({type:'TOGGLE', id});
-    const onRemove = () => dispatch({type:'REMOVE', id});
+function TodoItemEx({id, done, name}){
+    console.log(id, done, name)
+    const dispatch = useTodoDispatchEx();
+    const onToggle = () => {
+        console.log('토글 누를때 id')
+        console.log(id)
+        const ret = PostToggle({inputTodoId:id});
+        ret.then(() => dispatch({type:'TOGGLE', id})
+        );
+    };
+    const onRemove = () => {
+        const ret = PostDelete({inputTodoId:id});
+        ret.then(() => dispatch({type:'REMOVE', id}));
+    };
 
     return (
         <TodoItemBlock>
@@ -74,4 +85,5 @@ function TodoItem({id, done, name}){
     )
 }
 
-export default React.memo(TodoItem);
+export default React.memo(TodoItemEx);
+// export default TodoItemEx;

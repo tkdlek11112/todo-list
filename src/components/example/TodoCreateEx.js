@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import styled, { css } from 'styled-components';
 import { MdAdd } from 'react-icons/md';
-import {useTodoDispatch, useTodoNextId} from "../TodoContext";
+import {useTodoDispatchEx, useTodoNextIdEx} from "./TodoContextEx";
+import {PostCreate} from "../../api";
 
 const CircleButton = styled.button`
   background: #38d9a9;
@@ -76,12 +77,12 @@ const Input = styled.input`
   box-sizing: border-box;
 `;
 
-function TodoCreate() {
+function TodoCreateEx() {
     const [open, setOpen] = useState(false);
     const onToggle = () => setOpen(!open);
 
-    const dispatch = useTodoDispatch();
-    const nextId = useTodoNextId();
+    const dispatch = useTodoDispatchEx();
+    const nextId = useTodoNextIdEx();
 
     const [value, setValue] = useState('');
 
@@ -89,10 +90,13 @@ function TodoCreate() {
     const onSubmit = e => {
         e.preventDefault();
         console.log(value);
-        dispatch({type:'CREATE', todo:{id:nextId.current, name:value, done:false}});
-        setValue('');
-        setOpen(false);
-        nextId.current += 1;
+        const ret = PostCreate({inputTodoId:nextId.current, inputName:value});
+        ret.then(() => {
+            dispatch({type: 'CREATE', todo: {id: nextId.current, name: value, done: false}});
+            setValue('');
+            setOpen(false);
+            nextId.current += 1;
+        });
     }
 
     return (
@@ -111,4 +115,4 @@ function TodoCreate() {
     );
 }
 
-export default TodoCreate;
+export default TodoCreateEx;
