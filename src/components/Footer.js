@@ -14,11 +14,12 @@ function Footer({screen}){
     console.log('Footer screen number')
     console.log(screen)
     switch (screen){
+        default:
         case 1:
         case 101:
             return(
                 <FooterClass>
-                    <h2> 로그인/로그아웃/회원가입 API만들기 </h2>
+                    <h1> 로그인/로그아웃/회원가입 API만들기 </h1>
                     <b>기능</b> <br/>
                     - 아이디와 비밀번호를 입력하고 회원가입 버튼을 누르면 회원가입 API를 호출한다. <br/>
                     - 기존에 있는 아이디일 경우 ERROR 응답 <br/>
@@ -49,7 +50,7 @@ function Footer({screen}){
         case 102:
             return(
                 <FooterClass>
-                    <h2>To-Do 목록 조회 </h2>
+                    <h1>To-Do 목록 조회/완료/추가/삭제 </h1>
                     <b>기능</b> <br/>
                     - 서버에 있는 To-Do 목록을 가져와서 화면에 표시한다. <br/>
                     - To-Do 체크 버튼을 누르면 Done을 True(or False)로 바꿔준다. <br/>
@@ -57,22 +58,58 @@ function Footer({screen}){
                     - +버튼을 눌러 만들기를 하면 새로 To-Do를 만든다. <br/>
                     <br/>
 
-                    <h2>* To-Do 목록 조회 API </h2>
+                    <h2>* 전체 조회 API </h2>
                     URL : http://localhost:8000/todo/select <br/><br/>
                     <b>입력필드</b> <br/>
                     없음 <br/><br/>
                     <b>출력필드</b> <br/>
-                    id (string): To-Do Task 고유 아이디 <br/>
-                    name (string): To-Do Task 이름 <br/>
-                    done (boolean): To-Do Task 완료 여부 <br/>
+                    [ <br/>
+                    id (string): To-Do 고유 아이디 <br/>
+                    name (string): To-Do 이름 <br/>
+                    done (boolean): To-Do 완료 여부 <br/>
+                    ]
+                    <br/>
+                    <br/>
+                    <h2>* To-Do 추가 API </h2>
+                    URL : http://localhost:8000/todo/create <br/><br/>
+                    <b>입력필드</b> <br/>
+                    user_id (string) : 사용자 id <br/>
+                    todo_id (string) : To-Do 고유 아이디 <br/>
+                    name (string) : To-Do 이름<br/><br/>
+                    <b>출력필드</b> <br/>
+                    없음
+                    <br/>
+                    <br/>
+                    <h2>* To-Do 삭제 API </h2>
+                    URL : http://localhost:8000/todo/delete <br/><br/>
+                    <b>입력필드</b> <br/>
+                    todo_id (string) : To-Do 고유 아이디 <br/><br/>
+                    <b>출력필드</b> <br/>
+                    없음
+                    <br/>
+                    <br/>
+                    <h2>* To-Do 완료 API </h2>
+                    URL : http://localhost:8000/todo/toggle <br/><br/>
+                    <b>입력필드</b> <br/>
+                    todo_id (string) : To-Do 고유 아이디 <br/><br/>
+                    <b>출력필드</b> <br/>
+                    없음
                     <br/>
                 </FooterClass>
             )
-
-        default:
+        case 3:
+        case 103:
+        case 4:
+        case 104:
+        case 5:
+        case 105:
             return(
-                <></>
-            )
+                <FooterClass>
+                    <h1> 강의 준비중입니다. 조금만 기다려주세요 !!!</h1>
+                    <h1> Blog : <a href='https://cholol.tistory.com' target="_blank">마이쮸 블로그로 이동</a></h1>
+                    <h1> YouTube : <a href='https://www.youtube.com/channel/UCUe5vJxFkS2Cel78mdTgpYQ' target="_blank">마이쮸 유튜브로 이동</a></h1>
+                </FooterClass>
+            );
     }
 
 }

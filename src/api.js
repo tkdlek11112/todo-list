@@ -50,6 +50,7 @@ export async function PostCreate({inputTodoId, inputName}){
     console.log(inputTodoId);
     const response = await axios.post(
         'http://localhost:8000/todo/create',{
+            user_id:'mychew',
             todo_id:inputTodoId,
             name:inputName
         });

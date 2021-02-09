@@ -9,6 +9,7 @@ import TodoCreate from "./TodoCreate";
 import {TodoProvider} from "../TodoContext";
 import {TodoProviderEx} from "./example/TodoContextEx";
 import TodoCreateEx from "./example/TodoCreateEx";
+import NotReady from "./NotReady";
 
 
 function ScreenSelector({screen}){
@@ -27,18 +28,6 @@ function ScreenSelector({screen}){
                     </TodoTemplate>
                 </TodoProvider>
             );
-        case 3 :
-            return(
-                <>
-                    <LoginSp></LoginSp>
-                    <TodoProvider>
-                        <TodoTemplate>
-                            <TodoListSp1/>
-                        </TodoTemplate>
-                    </TodoProvider>
-                </>
-
-            );
         case 101:
             return (
                 <LoginEx></LoginEx>
@@ -52,16 +41,15 @@ function ScreenSelector({screen}){
                     </TodoTemplate>
                 </TodoProviderEx>
             );
+        case 3:
         case 103:
-            return (
-                <>
-                    <LoginEx></LoginEx>
-                    <TodoTemplate>
-                        <TodoListEx1/>
-                    </TodoTemplate>
-                </>
-
-            );
+        case 4:
+        case 104:
+        case 5:
+        case 105:
+            return(
+                <NotReady/>
+            )
     }
 }
 

@@ -94,7 +94,11 @@ function Login() {
     });
 
     const Join = () =>{
-        setMsg("회원가입이 완료되었습니다. (DUMMY)")
+        if(inputUserId == ''){
+            setMsg("아이디는 공백이 될 수 없습니다.");
+        }else{
+            setMsg("회원가입이 완료되었습니다. (DUMMY)");
+        }
     };
 
     const LogOut = () =>{
