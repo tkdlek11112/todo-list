@@ -64,7 +64,7 @@ function Footer({screen}){
                     없음 <br/><br/>
                     <b>출력필드</b> <br/>
                     [ <br/>
-                    id (string): To-Do 고유 아이디 <br/>
+                    id (int): To-Do 고유 아이디 <br/>
                     name (string): To-Do 이름 <br/>
                     done (boolean): To-Do 완료 여부 <br/>
                     ]
@@ -74,7 +74,7 @@ function Footer({screen}){
                     URL : http://localhost:8000/todo/create <br/><br/>
                     <b>입력필드</b> <br/>
                     user_id (string) : 사용자 id <br/>
-                    todo_id (string) : To-Do 고유 아이디 <br/>
+                    todo_id (int) : To-Do 고유 아이디 <br/>
                     name (string) : To-Do 이름<br/><br/>
                     <b>출력필드</b> <br/>
                     없음
@@ -83,7 +83,7 @@ function Footer({screen}){
                     <h2>* To-Do 삭제 API </h2>
                     URL : http://localhost:8000/todo/delete <br/><br/>
                     <b>입력필드</b> <br/>
-                    todo_id (string) : To-Do 고유 아이디 <br/><br/>
+                    todo_id (int) : To-Do 고유 아이디 <br/><br/>
                     <b>출력필드</b> <br/>
                     없음
                     <br/>
@@ -91,7 +91,7 @@ function Footer({screen}){
                     <h2>* To-Do 완료 API </h2>
                     URL : http://localhost:8000/todo/toggle <br/><br/>
                     <b>입력필드</b> <br/>
-                    todo_id (string) : To-Do 고유 아이디 <br/><br/>
+                    todo_id (int) : To-Do 고유 아이디 <br/><br/>
                     <b>출력필드</b> <br/>
                     없음
                     <br/>
