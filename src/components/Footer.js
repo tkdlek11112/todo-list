@@ -63,7 +63,7 @@ function Footer({screen}){
                     <b>입력필드</b> <br/>
                     없음 <br/><br/>
                     <b>출력필드</b> <br/>
-                    [ <br/>
+                    tasks (Array) : [ <br/>
                     id (int): To-Do 고유 아이디 <br/>
                     name (string): To-Do 이름 <br/>
                     done (boolean): To-Do 완료 여부 <br/>
