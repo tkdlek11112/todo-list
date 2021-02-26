@@ -34,9 +34,7 @@ function App(){
             <GlobalStyle/>
             <LoginProvider>
                 <PlayGround>
-                    {/*<Login></Login>*/}
                     <ScreenSelector screen={screen} />
-
                 </PlayGround>
                 <Footer screen={screen}></Footer>
 

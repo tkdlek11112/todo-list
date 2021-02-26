@@ -4,22 +4,26 @@ const initialTodos = [
     {
         id: 1,
         name: "스피킹 맥스 하루 학습 100% 채우기",
-        done: false
+        done: false,
+        userId: "mychew"
     },
     {
         id: 2,
         name: "운동아무거나하기",
-        done: false
+        done: false,
+        userId: "mychew"
     },
     {
         id: 3,
         name: "해리포터 책 읽기",
-        done: false
+        done: false,
+        userId: "mychew"
     },
     {
         id: 4,
         name: "이마트에서 생수 주문하기",
-        done: false
+        done: false,
+        userId: "mychew"
     },
 ];
 

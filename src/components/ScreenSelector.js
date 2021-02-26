@@ -1,6 +1,7 @@
 import React from 'react';
 import TodoListEx1 from "./example/TodoListEx1";
 import TodoListSp1 from "./sample/TodoListSp1";
+import TodoListSp2 from "./sample/TodoListSp2";
 import LoginEx from "./example/LoginEx";
 import LoginSp from "./sample/LoginSp";
 import TodoTemplate from "./TodoTemplate";
@@ -43,6 +44,15 @@ function ScreenSelector({screen}){
             );
         case 3:
         case 103:
+            return (
+                <TodoProvider>
+                    <LoginSp></LoginSp>
+                    <TodoTemplate>
+                        <TodoListSp2/>
+                        <TodoCreate/>
+                    </TodoTemplate>
+                </TodoProvider>
+            );
         case 4:
         case 104:
         case 5:

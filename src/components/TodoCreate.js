@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styled, { css } from 'styled-components';
 import { MdAdd } from 'react-icons/md';
 import {useTodoDispatch, useTodoNextId} from "../TodoContext";
+import {useUserIdProvider} from "../LoginContext";
 
 const CircleButton = styled.button`
   background: #38d9a9;
@@ -83,13 +84,15 @@ function TodoCreate() {
     const dispatch = useTodoDispatch();
     const nextId = useTodoNextId();
 
+    const userId = useUserIdProvider();
+
     const [value, setValue] = useState('');
 
     const onChange = e => setValue(e.target.value);
     const onSubmit = e => {
         e.preventDefault();
         console.log(value);
-        dispatch({type:'CREATE', todo:{id:nextId.current, name:value, done:false}});
+        dispatch({type:'CREATE', todo:{id:nextId.current, name:value, done:false, userId:userId}});
         setValue('');
         setOpen(false);
         nextId.current += 1;

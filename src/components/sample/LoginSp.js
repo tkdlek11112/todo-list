@@ -1,7 +1,7 @@
 import React,{useContext, useState, useMemo, useEffect} from 'react';
 import styled, {css} from 'styled-components';
 import Button, {NormalButton} from "../Button";
-import {useLoginProvider, usePasswordContext, useSetPasswordContext, useSetUserIdContext} from "../../LoginContext";
+import {useUserIdProvider, usePasswordContext, useSetPasswordContext, useSetUserIdContext} from "../../LoginContext";
 import {useAsync} from "react-async";
 import {PostJoin, PostLogin} from "../../api";
 
@@ -67,10 +67,11 @@ function setGlobalUserId(user_id, setUserId){
 
 
 function Login() {
-    const userId = useLoginProvider(); // 이건 전체 id로 사용하자
+    const userId = useUserIdProvider(); // 이건 전체 id로 사용하자
+    const setUserId = useSetUserIdContext();
+
     const [dummyUserId, setDummyUserId ] = useState('');
 
-    const setUserId = useSetUserIdContext();
     const password = usePasswordContext();
     const setPassword = useSetPasswordContext();
     const [show, setShow] = useState(true);

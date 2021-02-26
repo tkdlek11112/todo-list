@@ -24,7 +24,7 @@ function LoginProvider({children}){
 
 export default LoginProvider;
 
-export function useLoginProvider(){
+export function useUserIdProvider(){
     return useContext(userIdContext);
 }
 
