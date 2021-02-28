@@ -70,7 +70,7 @@ function Login() {
     const userId = useUserIdProvider(); // 이건 전체 id로 사용하자
     const setUserId = useSetUserIdContext();
 
-    const [dummyUserId, setDummyUserId ] = useState('');
+    const [dummyUserId, setDummyUserId] = useState('');
 
     const password = usePasswordContext();
     const setPassword = useSetPasswordContext();
@@ -81,9 +81,7 @@ function Login() {
 
     const LoginDummy = () => {
         setDummyUserId(inputUserId);
-        console.log(dummyUserId);
     };
-
 
     const {data: response, error, isLoading, run} = useAsync({
         deferFn: PostLogin,
@@ -104,8 +102,8 @@ function Login() {
 
     const LogOut = () =>{
         setMsg('아이디와 비밀번호를 입력해주세요.');
-        setDummyUserId(null);
-        setGlobalUserId(dummyUserId,setUserId)
+        setDummyUserId('');
+        setGlobalUserId('', setUserId)
         setShow(true);
         setInputUserId( '');
         setInputPassword('');
@@ -117,7 +115,7 @@ function Login() {
             setGlobalUserId(dummyUserId, setUserId);
             setShow(false);
         }
-    });
+    }, [dummyUserId]);
 
     useEffect(()=>{
         setMsg(response.msg)
@@ -153,9 +151,7 @@ function Login() {
                         </TextMessage>
                     </LoginFormDiv>
                     <LoginFormDiv>
-
                         <NormalButton outline={true} onClick={LogOut}> 로그아웃 </NormalButton>
-
                     </LoginFormDiv>
                 </LoginTemplateBlock>
             </>

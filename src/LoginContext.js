@@ -1,6 +1,5 @@
 import React, {useState, createContext, useContext} from 'react';
 
-
 const userIdContext = createContext();
 const setUserIdContext = createContext();
 const passwordContext = createContext();
