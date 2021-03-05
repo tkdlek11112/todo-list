@@ -4,9 +4,16 @@ import axios from "axios";
 export async function getTodos(){
     const response = await axios.post(
         'http://localhost:8000/todo/select');
-    console.log('data');
-    console.log(response.data.tasks);
     return response.data.tasks;
+}
+
+export async function getTodosWithId(inputUserId, inputPageNumber){
+    const response = await axios.post(
+        'http://localhost:8000/todo/select', {
+            user_id:inputUserId,
+            page_number:inputPageNumber
+        });
+    return response.data;
 }
 
 export async function createTodo(){
@@ -55,6 +62,16 @@ export async function PostCreate({inputTodoId, inputName}){
             name:inputName
         });
     console.log(response);
+    return response.data;
+}
+
+
+export async function PostCreateEx3(inputUserId, inputName){
+    const response = await axios.post(
+        'http://localhost:8000/todo/create',{
+            user_id:inputUserId,
+            name:inputName
+        });
     return response.data;
 }
 
