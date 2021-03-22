@@ -99,6 +99,56 @@ function Footer({screen}){
             )
         case 3:
         case 103:
+            return(
+                <FooterClass>
+                    <h1>로그인 + To-Do C.R.U.D </h1>
+                    <b>기능</b> <br/>
+                    - 실습 1 + 실습 2 <br/>
+                    - 로그인하면 로그인 한 ID로만 To-Do 조회 <br/>
+                    - 10개씩 페이징 처리 <br/>
+                    <br/>
+
+                    <h2>* To-Do 조회 API </h2>
+                    URL : http://localhost:8000/todo/select <br/><br/>
+                    <b>입력필드</b> <br/>
+                    user_id (string) : 사용자 id <br/>
+                    page_number (int) : 페이지 번호 <br/>
+                    <br/><br/>
+                    <b>출력필드</b> <br/>
+                    tasks (Array) : [ <br/>
+                    id (int): To-Do 고유 아이디 <br/>
+                    name (string): To-Do 이름 <br/>
+                    done (boolean): To-Do 완료 여부 <br/>
+                    ] <br/>
+                    is_last_page (boolean): 마지막 페이지 여부
+                    <br/>
+                    <br/>
+                    <h2>* To-Do 추가 API </h2>
+                    URL : http://localhost:8000/todo/create <br/><br/>
+                    <b>입력필드</b> <br/>
+                    user_id (string) : 사용자 id <br/>
+                    name (string) : To-Do 이름<br/><br/>
+                    <b>출력필드</b> <br/>
+                    없음
+                    <br/>
+                    <br/>
+                    <h2>* To-Do 삭제 API </h2>
+                    URL : http://localhost:8000/todo/delete <br/><br/>
+                    <b>입력필드</b> <br/>
+                    todo_id (int) : To-Do 고유 아이디 <br/><br/>
+                    <b>출력필드</b> <br/>
+                    없음
+                    <br/>
+                    <br/>
+                    <h2>* To-Do 완료 API </h2>
+                    URL : http://localhost:8000/todo/toggle <br/><br/>
+                    <b>입력필드</b> <br/>
+                    todo_id (int) : To-Do 고유 아이디 <br/><br/>
+                    <b>출력필드</b> <br/>
+                    없음
+                    <br/>
+                </FooterClass>
+            )
         case 4:
         case 104:
         case 5:

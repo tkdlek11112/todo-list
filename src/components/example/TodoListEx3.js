@@ -41,7 +41,7 @@ function TodoListEx3(){
         const ret = getTodosWithId(userId, page);
         ret.then((data)=>{
             dispatch({type:'REPLACE', todos:data.tasks});
-            setIsLastPage(data.isLastPage);
+            setIsLastPage(data.is_last_page);
         });
     }
     useEffect(() => load(),
