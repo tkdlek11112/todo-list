@@ -130,7 +130,7 @@ function Footer({screen}){
                     user_id (string) : 사용자 id <br/>
                     name (string) : To-Do 이름<br/><br/>
                     <b>출력필드</b> <br/>
-                    없음
+                    id (int) : 생성된 To-Do의 ID<br/>
                     <br/>
                     <br/>
                     <h2>* To-Do 삭제 API </h2>
