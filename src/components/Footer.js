@@ -118,10 +118,10 @@ function Footer({screen}){
                     tasks (Array) : [ <br/>
                     id (int): To-Do 고유 아이디 <br/>
                     name (string): To-Do 이름 <br/>
-                    user_id (string): 사용자 id <br/>
+                    userId (string): 사용자 id <br/>
                     done (boolean): To-Do 완료 여부 <br/>
                     ] <br/>
-                    is_last_page (boolean): 마지막 페이지 여부
+                    isLastPage (boolean): 마지막 페이지 여부
                     <br/>
                     <br/>
                     <h2>* To-Do 추가 API </h2>
