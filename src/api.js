@@ -75,6 +75,21 @@ export async function PostCreateEx3(inputUserId, inputName){
     return response.data;
 }
 
+
+export async function PostCreateEx4(inputUserId, inputName){
+    const headers = {
+        'id': inputUserId,
+        'version': '1.1'
+    }
+    const response = await axios.post(
+//        'http://localhost:8000/todo/create',{
+            '/todo/create',{
+            user_id:inputUserId,
+            name:inputName
+        },{headers});
+    return response.data;
+}
+
 export async function PostDelete({inputTodoId}){
     console.log('날리기전 id');
     console.log(inputTodoId);

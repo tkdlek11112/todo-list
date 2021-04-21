@@ -61,7 +61,6 @@ const Text = styled.div`
     `}
 `;
 
-
 const Text2 = styled.div`
   flex: 0.5;
   font-size: 21px;
@@ -72,6 +71,29 @@ const Text2 = styled.div`
       color: #ced4da;
     `}
 `;
+
+const Text3 = styled.div`
+    flex: 1;
+    font-size: 12px;
+    color: #495057;
+    ${props =>
+        props.done &&
+        css`
+            color: #ced4da;
+        `}
+`;
+
+const Text4 = styled.div`
+  flex: 0.5;
+  font-size: 12px;
+  color: #495057;
+  ${props =>
+    props.done &&
+    css`
+      color: #ced4da;
+    `}
+`;
+
 
 const TodoItem = React.memo(function TodoItem({id, done, name}){
     const dispatch = useTodoDispatch();
@@ -107,4 +129,22 @@ const TodoItem2 = React.memo(function TodoItem2({id, done, name, userId}){
     )
 })
 
-export {TodoItem, TodoItem2};
+
+const TodoItem3 = React.memo(function TodoItem3({id, done, name, userId}){
+    const dispatch = useTodoDispatch();
+    const onToggle = () => dispatch({type:'TOGGLE', id});
+    const onRemove = () => dispatch({type:'REMOVE', id});
+
+    return (
+        <TodoItemBlock>
+            <CheckCircle done={done} onClick={onToggle} >{done && <MdDone/>}</CheckCircle>
+            <Text3 done={done}>{name}</Text3>
+            <Text4>[{userId}]</Text4>
+            <Remove onClick={onRemove} >
+                <MdDelete/>
+            </Remove>
+        </TodoItemBlock>
+    )
+})
+
+export {TodoItem, TodoItem2, TodoItem3};
