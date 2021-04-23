@@ -15,7 +15,18 @@ export async function getTodosWithId(inputUserId, inputPageNumber){
         });
     return response.data;
 }
-
+export async function getTodosWithHeaderId(inputUserId, inputPageNumber){
+    const headers = {
+        'id': inputUserId,
+        'version': '1.1'
+    }
+    const response = await axios.post(
+        '/todo/select', {
+            user_id:inputUserId,
+            page_number:inputPageNumber
+        },{headers});
+    return response.data;
+}
 export async function createTodo(){
 
 }

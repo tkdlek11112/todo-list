@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
-import {getTodos, getTodosWithId} from "../../api";
+import {getTodos, getTodosWithHeaderId, getTodosWithId} from "../../api";
 import {useTodoDispatchEx, useTodoStateEx} from "./TodoContextEx";
 import {FaArrowAltCircleLeft, FaArrowAltCircleRight} from 'react-icons/fa'
 import {useUserIdProvider} from "../../LoginContext";
@@ -38,7 +38,7 @@ function TodoListEx4(){
     const [todoCount, setTodoCount] = useState(0)
 
     const load = () =>{
-        const ret = getTodosWithId(userId, page);
+        const ret = getTodosWithHeaderId(userId, page);
         ret.then((data)=>{
             dispatch({type:'REPLACE', todos:data.tasks});
             setIsLastPage(data.is_last_page);
