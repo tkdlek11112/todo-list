@@ -42,26 +42,31 @@ export async function PostJoin({inputUserId, inputPassword}){
 }
 
 export async function PostToggle({inputTodoId}){
-    console.log('날리기전 id');
-    console.log(inputTodoId);
     const response = await axios.post(
         'http://localhost:8000/todo/toggle',{
             todo_id:inputTodoId
         });
-    console.log(response);
+    return response.data;
+}
+
+export async function PostToggleEx4({inputTodoId}){
+    const headers = {
+        'version': '1.1'
+    }
+    const response = await axios.post(
+        '/todo/toggle',{
+            todo_id:inputTodoId
+        }, {headers});
     return response.data;
 }
 
 export async function PostCreate({inputTodoId, inputName}){
-    console.log('날리기전 id');
-    console.log(inputTodoId);
     const response = await axios.post(
         'http://localhost:8000/todo/create',{
             user_id:'mychew',
             todo_id:inputTodoId,
             name:inputName
         });
-    console.log(response);
     return response.data;
 }
 
@@ -91,12 +96,20 @@ export async function PostCreateEx4(inputUserId, inputName){
 }
 
 export async function PostDelete({inputTodoId}){
-    console.log('날리기전 id');
-    console.log(inputTodoId);
     const response = await axios.post(
         'http://localhost:8000/todo/delete',{
             todo_id:inputTodoId
         });
-    console.log(response);
+    return response.data;
+}
+
+export async function PostDeleteEx4({inputTodoId}){
+    const headers = {
+        'version': '1.1'
+    }
+    const response = await axios.post(
+        '/todo/delete',{
+            todo_id:inputTodoId
+        },{headers});
     return response.data;
 }

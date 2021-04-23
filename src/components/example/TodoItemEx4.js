@@ -1,7 +1,7 @@
 import React from 'react';
 import styled, {css} from 'styled-components';
 import {MdDone, MdDelete} from 'react-icons/md';
-import {PostDelete, PostToggle} from "../../api";
+import {PostDeleteEx4, PostToggleEx4} from "../../api";
 import {useTodoDispatchEx} from "./TodoContextEx";
 
 const Remove = styled.div`
@@ -88,12 +88,12 @@ function TodoItemEx4({id, done, name,userId}){
     const onToggle = () => {
         console.log('토글 누를때 id')
         console.log(id)
-        const ret = PostToggle({inputTodoId:id});
+        const ret = PostToggleEx4({inputTodoId:id});
         ret.then(() => dispatch({type:'TOGGLE', id})
         );
     };
     const onRemove = () => {
-        const ret = PostDelete({inputTodoId:id});
+        const ret = PostDeleteEx4({inputTodoId:id});
         ret.then(() => dispatch({type:'REMOVE', id}));
     };
 

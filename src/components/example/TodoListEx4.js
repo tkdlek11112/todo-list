@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
 import {getTodos, getTodosWithId} from "../../api";
-import {useTodoDispatchEx, useTodoNextIdEx, useTodoStateEx} from "./TodoContextEx";
+import {useTodoDispatchEx, useTodoStateEx} from "./TodoContextEx";
 import {FaArrowAltCircleLeft, FaArrowAltCircleRight} from 'react-icons/fa'
 import {useUserIdProvider} from "../../LoginContext";
-import TodoItemEx3 from "./TodoItemEx3";
+import TodoItemEx4 from "./TodoItemEx4";
 
 
 
@@ -56,7 +56,7 @@ function TodoListEx4(){
         <>
             <TodoListBlock>
                 {local_todos.map(todo => (
-                    <TodoItemEx3
+                    <TodoItemEx4
                         key={todo.id}
                         id={todo.id}
                         userId={todo.userId}
