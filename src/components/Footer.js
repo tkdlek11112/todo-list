@@ -170,13 +170,16 @@ function Footer({screen}){
                     page_number (int) : 페이지 번호 <br/>
                     <br/>
                     <b>출력필드</b> <br/>
-                    tasks (Array) : [ <br/>
-                    id (int): To-Do 고유 아이디 <br/>
-                    name (string): To-Do 이름 <br/>
-                    userId (string): 사용자 id <br/>
-                    done (boolean): To-Do 완료 여부 <br/>
-                    ] <br/>
-                    isLastPage (boolean): 마지막 페이지 여부
+                    <b>result_code (string): 결과코드 </b><br/>
+                    <b>result_msg (msg) : 결과메시지 </b><br/>
+                    <b>data (object): 결과데이터 </b><br/>
+                    &nbsp; tasks (Array) : [ <br/>
+                    &nbsp;&nbsp; id (int): To-Do 고유 아이디 <br/>
+                    &nbsp;&nbsp; name (string): To-Do 이름 <br/>
+                    &nbsp;&nbsp; userId (string): 사용자 id <br/>
+                    &nbsp;&nbsp; done (boolean): To-Do 완료 여부 <br/>
+                    &nbsp;] <br/>
+                    &nbsp;isLastPage (boolean): 마지막 페이지 여부
                     <br/>
                     <br/>
                     <h2>* To-Do 추가 API </h2>
@@ -188,7 +191,10 @@ function Footer({screen}){
                     <b>입력필드</b> <br/>
                     name (string) : To-Do 이름<br/><br/>
                     <b>출력필드</b> <br/>
-                    id (int) : 생성된 To-Do의 ID<br/>
+                    <b>result_code (string): 결과코드 </b><br/>
+                    <b>result_msg (msg) : 결과메시지 </b><br/>
+                    <b>data (object): 결과데이터 </b><br/>
+                    &nbsp;id (int) : 생성된 To-Do의 ID<br/>
                     <br/>
                     <br/>
                     <h2>* To-Do 삭제 API </h2>
@@ -199,7 +205,8 @@ function Footer({screen}){
                     <b>입력필드</b> <br/>
                     todo_id (int) : To-Do 고유 아이디 <br/><br/>
                     <b>출력필드</b> <br/>
-                    없음
+                    <b>result_code (string): 결과코드 </b><br/>
+                    <b>result_msg (msg) : 결과메시지 </b><br/>
                     <br/>
                     <br/>
                     <h2>* To-Do 완료 API </h2>
@@ -210,7 +217,8 @@ function Footer({screen}){
                     <b>입력필드</b> <br/>
                     todo_id (int) : To-Do 고유 아이디 <br/><br/>
                     <b>출력필드</b> <br/>
-                    없음
+                    <b>result_code (string): 결과코드 </b><br/>
+                    <b>result_msg (msg) : 결과메시지 </b><br/>
                     <br/>
                 </FooterClass>
             )
