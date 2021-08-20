@@ -21,7 +21,7 @@ export async function getTodosWithHeaderId(inputUserId, inputPageNumber){
         'version': '1.1'
     }
     const response = await axios.post(
-        '/todo/select', {
+        'http://localhost:8000/todo/select', {
             user_id:inputUserId,
             page_number:inputPageNumber
         },{headers});
@@ -65,7 +65,7 @@ export async function PostToggleEx4({inputTodoId}){
         'version': '1.1'
     }
     const response = await axios.post(
-        '/todo/toggle',{
+        'http://localhost:8000/todo/toggle',{
             todo_id:inputTodoId
         }, {headers});
     return response.data;
@@ -99,7 +99,7 @@ export async function PostCreateEx4(inputUserId, inputName){
     }
     const response = await axios.post(
 //        'http://localhost:8000/todo/create',{
-            '/todo/create',{
+            'http://localhost:8000/todo/create',{
             user_id:inputUserId,
             name:inputName
         },{headers});
@@ -119,7 +119,7 @@ export async function PostDeleteEx4({inputTodoId}){
         'version': '1.1'
     }
     const response = await axios.post(
-        '/todo/delete',{
+        'http://localhost:8000/todo/delete',{
             todo_id:inputTodoId
         },{headers});
     return response.data;
